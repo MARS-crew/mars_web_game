@@ -70,6 +70,14 @@ export default class SpaceShip extends Phaser.Physics.Arcade.Sprite {
         }
       }
     }
+
+    if (this.scene.lives <= 0) {
+      console.log("게임오버");
+
+      //씬 전환
+      this.scene.gameOver();
+      console.log("게임오버");
+    }
   }
 
   hitEffect() {

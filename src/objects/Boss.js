@@ -21,34 +21,11 @@ export default class Boss extends Phaser.Physics.Arcade.Image {
       loop: true,
     });
 
-    this.scene.tweens.add({
-      targets: this,
-      scaleX: 1,
-      scaleY: 1,
-      x: this.x,
-      y: this.y,
-      duration: 1000,
-      ease: "Power1",
-      onComplete: () => {
-        this.scene.tweens.add({
-          targets: this,
-          x: { from: this.x, to: this.x + 200 },
-          y: this.y,
-          ease: "Linear",
-          duration: 3000,
-          yoyo: true,
-          repeat: -1,
-        });
-      },
-    });
     this.rotationOffset = 0; // 총알 방향을 조절하기 위한 각도 오프셋
   }
 
-  update() {}
-
   //미사일과 충돌 시 실행되는 함수
   hit() {
-    this.body.setVelocity(0, 0);
     //충돌 시 처리 코드
     this.health -= 10;
     // 피격 사운드
@@ -60,6 +37,7 @@ export default class Boss extends Phaser.Physics.Arcade.Image {
   }
 
   hitEffect() {
+    this.body.setVelocity(0);
     // 반짝임 처리
     this.setTintFill(0xf9f9f9);
     this.scene.time.addEvent({

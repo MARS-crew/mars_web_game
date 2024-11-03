@@ -24,6 +24,7 @@ export default class HelloWorldScene extends Phaser.Scene {
     this.enemy1Count = 0;
     this.phaseCount = 0;
     this.phaseInProgress = 0;
+    this.gameOverTriggered = false;
   }
 
   preload() {
@@ -123,7 +124,7 @@ export default class HelloWorldScene extends Phaser.Scene {
 
     this.stones = this.physics.add.group({
       classType: Stone,
-      maxSize: 10,
+      maxSize: 1000,
       runChildUpdate: true,
     });
 
@@ -166,7 +167,8 @@ export default class HelloWorldScene extends Phaser.Scene {
     this.hearts = [];
     for (let i = 0; i < this.lives; i++) {
       const heart = this.add.image(36 + i * 36, 30, "heart");
-      heart.setAn;
+      heart.setAlpha(1);
+      console.log(this.lives);
       this.hearts.push(heart);
     }
 
@@ -218,29 +220,32 @@ export default class HelloWorldScene extends Phaser.Scene {
     }
 
     this.background.tilePositionY -= 1;
-    if (this.lives == 0) {
-      this.time.addEvent({
-        delay: 1000,
-        callback: () => {
-          this.scene.start("game-over");
-        },
-      });
-    }
 
     if (this.announcer?.active) {
       // 행성이 떨어지는 이벤트 잠시 중지
       this.planetEvent.paused = true;
-    } else if (this.phaseInProgress == 0 && this.phaseCount <= 1) {
+    } else {
+      this.phaseProgress();
+    }
+  }
+
+  phaseProgress() {
+    if (this.phaseInProgress == 0 && this.phaseCount <= 1) {
+      // this.phaseCount++;
+      console.log("phase progress");
       this.phase1();
+      console.log(this.phaseCount);
     } else if (this.phaseInProgress == 0 && this.phaseCount == 2) {
-      this.phaseCount++;
       const textdata = [
         "이제 거의 다 왔습니다 이제 마지막 적을 처치하고 마스로 가세요.",
       ];
       // 아나운서 생성
       this.announcer = new Announcer(this, 36, 100, textdata);
+      this.phaseCount++;
+      console.log(this.phaseCount);
     } else if (this.phaseInProgress == 0 && this.phaseCount == 3) {
       this.phase2();
+      console.log(this.phaseCount);
     } else {
       this.planetEvent.paused = false;
     }
@@ -348,10 +353,32 @@ export default class HelloWorldScene extends Phaser.Scene {
     this.phaseCount++;
 
     const boss = this.boss.get(this.scale.width / 2 - 100, 100, "boss");
+
+    this.tweens.add({
+      targets: boss,
+      scaleX: 1,
+      scaleY: 1,
+      x: boss.x,
+      y: boss.y,
+      duration: 1000,
+      ease: "Power1",
+      onComplete: () => {
+        this.tweens.add({
+          targets: boss,
+          x: { from: boss.x, to: boss.x + 200 },
+          y: boss.y,
+          ease: "Linear",
+          duration: 3000,
+          yoyo: true,
+          repeat: -1,
+        });
+      },
+    });
   }
 
   onEnemyDestroyed() {
     this.enemy1Count--; // 적의 수 감소
+    this.phaseProgress();
     if (this.enemy1Count === 0) {
       this.phaseInProgress = 0;
     }
@@ -364,5 +391,22 @@ export default class HelloWorldScene extends Phaser.Scene {
         this.scene.start("game-clear");
       },
     });
+  }
+  gameOver() {
+    console.log("게임오버보스한테죽음");
+
+    // 모든 총알 삭제
+    this.missiles.clear(true, true);
+    // 모든 돌 삭제
+    this.stones.clear(true, true);
+    // 모든 적 삭제
+    this.enemy1Group.clear(true, true);
+    // 모든 보스 삭제
+    this.boss.clear(true, false);
+    // 모든 행성 삭제
+    this.planets.clear(true, true);
+
+    this.gameOverTriggered = true;
+    this.scene.start("game-over");
   }
 }

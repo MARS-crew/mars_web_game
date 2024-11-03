@@ -38,19 +38,6 @@ export const EffectData = {
       repeat: 0,
     },
   },
-  airplaneFly: {
-    name: "airplaneFly",
-    src: "/mars_web_game/assets/airplaneFly.png",
-    frameWidth: 52,
-    frameHeight: 92,
-    animation: {
-      key: "airplaneFly",
-      start: 0,
-      end: 7,
-      frameRate: 8,
-      repeat: -1,
-    },
-  },
   spaceShip: {
     name: "spaceShip",
     src: "/mars_web_game/assets/spaceShip.png",

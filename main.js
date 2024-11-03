@@ -17,7 +17,7 @@ const config = {
     },
   },
   scene: [HelloWorldScene, GameClearScene, GameOverScene],
-  parent: "game-container",
+  parent: "app",
   fps: {
     target: 60,
     forceSetTimeOut: true,
