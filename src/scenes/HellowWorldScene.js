@@ -73,11 +73,15 @@ export default class HelloWorldScene extends Phaser.Scene {
         forceMin: 16,
       });
 
+    var graphics = this.add.graphics();
+
     this.input
       .on("pointerup", function () {
+        graphics.clear();
         controller.clearVector();
       })
       .on("pointermove", function (pointer) {
+        graphics.clear();
         if (!pointer.isDown) {
           controller.clearVector();
           return;
@@ -89,6 +93,10 @@ export default class HelloWorldScene extends Phaser.Scene {
           pointer.x,
           pointer.y
         );
+
+        graphics
+          .lineStyle(3, 0xff0000)
+          .lineBetween(pointer.downX, pointer.downY, pointer.x, pointer.y);
       });
 
     this.cursorKeys = controller.createCursorKeys();
