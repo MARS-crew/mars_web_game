@@ -1,5 +1,5 @@
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  base: "/mars-web-game/",
+  base: "/mars_web_game/",
 });
