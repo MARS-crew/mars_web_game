@@ -1,7 +1,7 @@
 export const EffectData = {
   explosion: {
     name: "explode",
-    src: "/mars_web_game/assets/boomEffect.png",
+    src: "/assets/boomEffect.png",
     frameWidth: 69,
     frameHeight: 60,
     animation: {
@@ -14,7 +14,7 @@ export const EffectData = {
   },
   newExplosion: {
     name: "newExplode",
-    src: "/mars_web_game/assets/destroy.png",
+    src: "/assets/destroy.png",
     frameWidth: 517,
     frameHeight: 517,
     animation: {
@@ -27,7 +27,7 @@ export const EffectData = {
   },
   bigHit: {
     name: "bigHitExplode",
-    src: "/mars_web_game/assets/bigHit.png",
+    src: "/assets/bigHit.png",
     frameWidth: 120,
     frameHeight: 109,
     animation: {
@@ -40,7 +40,7 @@ export const EffectData = {
   },
   spaceShip: {
     name: "spaceShip",
-    src: "/mars_web_game/assets/spaceShip.png",
+    src: "/assets/spaceShip.png",
     frameWidth: 32,
     frameHeight: 32,
     animation: {
@@ -53,7 +53,7 @@ export const EffectData = {
   },
   spaceShip_straight: {
     name: "spaceShip_straight",
-    src: "/mars_web_game/assets/spaceShip_straight.png",
+    src: "/assets/spaceShip_straight.png",
     frameWidth: 32,
     frameHeight: 44,
     animation: {
@@ -66,7 +66,7 @@ export const EffectData = {
   },
   spaceShip_left: {
     name: "spaceShip_left",
-    src: "/mars_web_game/assets/spaceShip_left.png",
+    src: "/assets/spaceShip_left.png",
     frameWidth: 32,
     frameHeight: 44,
     animation: {
@@ -79,7 +79,7 @@ export const EffectData = {
   },
   spaceShip_right: {
     name: "spaceShip_right",
-    src: "/mars_web_game/assets/spaceShip_right.png",
+    src: "/assets/spaceShip_right.png",
     frameWidth: 32,
     frameHeight: 44,
     animation: {
@@ -92,7 +92,7 @@ export const EffectData = {
   },
   announcer: {
     name: "announcer",
-    src: "/mars_web_game/assets/announcer.png",
+    src: "/assets/announcer.png",
     frameWidth: 32,
     frameHeight: 32,
     animation: {
@@ -105,7 +105,7 @@ export const EffectData = {
   },
   enemyDestory: {
     name: "enemyDestory",
-    src: "/mars_web_game/assets/enemyDestory.png",
+    src: "/assets/enemyDestory.png",
     frameWidth: 40,
     frameHeight: 40,
     animation: {
