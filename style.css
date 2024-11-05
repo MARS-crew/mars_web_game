@@ -97,7 +97,7 @@ button:focus-visible {
 
 @font-face {
   font-family: "NeoDGM";
-  src: url("/mars_web_game/assets/font/neodgm.woff2") format("woff2");
+  src: url("/assets/font/neodgm.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
 }

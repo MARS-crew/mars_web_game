@@ -28,19 +28,19 @@ export default class HelloWorldScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image("planet", "/mars_web_game/assets/planet_09.png");
-    this.load.image("space", "/mars_web_game/assets/spaceBg.png");
-    this.load.image("stone", "/mars_web_game/assets/bomb.png");
-    this.load.image("missile", "/mars_web_game/assets/missile.png");
-    this.load.image("heart", "/mars_web_game/assets/heart.png");
-    this.load.image("particle", "/mars_web_game/assets/particle.png");
-    this.load.image("particle2", "/mars_web_game/assets/particle2.png");
+    this.load.image("planet", "/assets/planet_09.png");
+    this.load.image("space", "/assets/spaceBg.png");
+    this.load.image("stone", "/assets/bomb.png");
+    this.load.image("missile", "/assets/missile.png");
+    this.load.image("heart", "/assets/heart.png");
+    this.load.image("particle", "/assets/particle.png");
+    this.load.image("particle2", "/assets/particle2.png");
     this.load.image(
       "announcer_frame",
-      "/mars_web_game/assets/announcer_frame.png"
+      "/assets/announcer_frame.png"
     );
-    this.load.image("enemy1", "/mars_web_game/assets/enemy1.png");
-    this.load.image("boss", "/mars_web_game/assets/boss.png");
+    this.load.image("enemy1", "/assets/enemy1.png");
+    this.load.image("boss", "/assets/boss.png");
 
     loadAudio(this); // 모든 오디오 로드
     loadEffects(this); // 모든 이펙트 로드
